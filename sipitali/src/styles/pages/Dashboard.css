@@ -1,0 +1,87 @@
+@import '../common/variables.css';
+
+.dashboard {
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dashboard h1 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+}
+
+.confirmation-message {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 2px solid var(--success-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.confirmation-message h3 {
+  color: var(--success-color);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.confirmation-message p {
+  color: #065f46;
+  margin: 0;
+}
+
+.dashboard-actions {
+  margin-bottom: 2rem;
+}
+
+.appointment-form-container {
+  margin-bottom: 2rem;
+}
+
+.appointments-section {
+  margin-top: 2rem;
+}
+
+.appointments-section h2 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.admin-section {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.admin-section h2 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.admin-section ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.admin-section li {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
