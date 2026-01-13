@@ -1,0 +1,17 @@
+@import '../common/variables.css';
+
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.no-appointments {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  background: var(--white);
+  border-radius: var(--border-radius);
+  border: 1px dashed var(--border-color);
+}
+

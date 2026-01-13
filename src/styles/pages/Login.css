@@ -1,0 +1,34 @@
+@import '../common/variables.css';
+
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.signup-link {
+  margin-top: 1.5rem;
+  color: var(--white);
+  text-align: center;
+}
+
+.signup-link a {
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.signup-link a:hover {
+  opacity: 0.9;
+}
+
