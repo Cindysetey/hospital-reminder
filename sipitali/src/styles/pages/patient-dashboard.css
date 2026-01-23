@@ -1,0 +1,785 @@
+/* ============================================
+   PATIENT DASHBOARD - IMMERSIVE DESIGN
+   ============================================ */
+
+/* Main Background with Parallax Effect */
+.patient-dashboard {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.95) 100%
+    );
+    overflow: hidden;
+  }
+  
+  /* Primary Background Layer - Modern Healthcare Image */
+  .patient-dashboard::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(
+        135deg,
+        rgba(16, 185, 129, 0.15) 0%,
+        rgba(14, 165, 233, 0.1) 50%,
+        rgba(139, 92, 246, 0.08) 100%
+      ),
+      url('https://i.pinimg.com/736x/3b/09/26/3b09265be5a2febd18980fc82de96f4d.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    filter: brightness(1.1) saturate(1.2) blur(0.5px);
+    transform: scale(1.1);
+    animation: slowZoom 30s ease-in-out infinite alternate;
+    z-index: -3;
+  }
+  
+  /* Secondary Pattern Overlay */
+  .patient-dashboard::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
+    z-index: -2;
+    pointer-events: none;
+  }
+  
+  /* Main Content Container with Glass Effect */
+  .patient-dashboard .dashboard-container {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-2xl);
+    box-shadow: 
+      var(--shadow-2xl),
+      0 0 0 1px rgba(255, 255, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    animation: slideUp 0.6s ease-out 0.2s both;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Animated Border Gradient */
+  .patient-dashboard .dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--success-color),
+      var(--secondary-color),
+      var(--primary-color)
+    );
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+  
+  /* Floating Particles Effect */
+  .patient-dashboard .particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    z-index: -1;
+  }
+  
+  .patient-dashboard .particle:nth-child(odd) {
+    animation-delay: 1s;
+  }
+  
+  .patient-dashboard .particle:nth-child(even) {
+    animation-delay: 2s;
+  }
+  
+  /* Confirmation Message with Animation */
+  .confirmation-message {
+    background: linear-gradient(
+      135deg,
+      rgba(16, 185, 129, 0.15) 0%,
+      rgba(16, 185, 129, 0.08) 100%
+    );
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 20px rgba(16, 185, 129, 0.15);
+    animation: 
+      slideUp 0.6s ease-out,
+      pulse 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .confirmation-message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+    animation: shimmer 3s infinite linear;
+  }
+  
+  .confirmation-message h3 {
+    color: var(--success-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+  }
+  
+  .confirmation-message h3::before {
+    content: '✓';
+    background: linear-gradient(135deg, var(--success-color), var(--secondary-color));
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    animation: pulse 2s infinite;
+  }
+  
+  .confirmation-message p {
+    color: var(--text-primary);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+  
+  /* Dashboard Actions */
+  .dashboard-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2.5rem;
+    animation: fadeIn 0.8s ease-out 0.4s both;
+  }
+  
+  /* Appointment Form Container */
+  .appointment-form-container {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.9) 100%
+    );
+    backdrop-filter: blur(30px);
+    border-radius: var(--radius-2xl);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 
+      var(--shadow-2xl),
+      0 0 40px rgba(37, 99, 235, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    animation: slideUp 0.6s ease-out 0.3s both;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .appointment-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--primary-color),
+      var(--secondary-color),
+      var(--accent-color)
+    );
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+  
+  /* Appointments Section */
+  .appointments-section {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.9) 100%
+    );
+    backdrop-filter: blur(30px);
+    border-radius: var(--radius-2xl);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 
+      var(--shadow-2xl),
+      0 0 40px rgba(139, 92, 246, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    animation: slideUp 0.6s ease-out 0.4s both;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .appointments-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--secondary-color),
+      var(--primary-color)
+    );
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+  
+  .appointments-section > h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .appointments-section > h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    border-radius: 3px;
+    animation: expandWidth 1s ease-out forwards;
+  }
+  
+  /* Custom Animations */
+  @keyframes slowZoom {
+    0% {
+      transform: scale(1.1) translateY(0);
+    }
+    100% {
+      transform: scale(1.15) translateY(-20px);
+    }
+  }
+  
+  @keyframes expandWidth {
+    from {
+      width: 0;
+    }
+    to {
+      width: 80px;
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .patient-dashboard .dashboard-container {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .appointment-form-container,
+    .appointments-section {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Hover Effects for Cards */
+  .patient-dashboard .stat-card,
+  .patient-dashboard .appointment-item {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .patient-dashboard .stat-card:hover,
+  .patient-dashboard .appointment-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      var(--shadow-2xl),
+      0 15px 30px rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+  
+  /* Loading Animation */
+  .patient-dashboard .loading {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-2xl);
+  }
+  
+  .patient-dashboard .loading-spinner {
+    background: conic-gradient(
+      from 0deg,
+      var(--primary-color),
+      var(--secondary-color),
+      var(--accent-color),
+      var(--primary-color)
+    );
+    animation: spin 1s linear infinite;
+  }
+  /* ============================================
+   PATIENT DASHBOARD - PROFESSIONAL HEALTHCARE UI
+   ============================================ */
+
+/* Enhanced Base Container */
+.patient-dashboard .dashboard-container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 1.5rem auto;
+  max-width: 1400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background pattern */
+.patient-dashboard .dashboard-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, 
+      var(--primary-color) 0%, 
+      var(--secondary-color) 50%, 
+      var(--success-color) 100%);
+  z-index: 1;
+}
+
+/* Welcome Section - More Prominent */
+.patient-dashboard .welcome-section {
+  padding: 2rem 0 3rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.welcome-message {
+  max-width: 800px;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(139, 92, 246, 0.03));
+  border-radius: 16px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.welcome-message p {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Confirmation Message - More Noticeable */
+.confirmation-message {
+  background: linear-gradient(135deg, 
+      rgba(16, 185, 129, 0.12) 0%, 
+      rgba(16, 185, 129, 0.06) 100%);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  animation: gentlePulse 3s infinite;
+}
+
+.confirmation-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.confirmation-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--success-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.confirmation-text h3 {
+  color: var(--success-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.confirmation-text p {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.confirmation-dismiss {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0.5rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.confirmation-dismiss:hover {
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+/* Dashboard Actions - Better Button */
+.dashboard-actions {
+  margin-bottom: 2.5rem;
+}
+
+.book-appointment-btn {
+  padding: 1.125rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-appointment-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.7s;
+}
+
+.book-appointment-btn:hover::before {
+  left: 100%;
+}
+
+.book-appointment-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.4);
+}
+
+.book-appointment-btn:active {
+  transform: translateY(-1px);
+}
+
+.btn-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  background: rgba(255, 255, 255, 0.2);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Appointment Form Container */
+.appointment-form-container {
+  background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.95) 0%, 
+      rgba(255, 255, 255, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.appointment-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 20px 20px 0 0;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.form-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Appointments Section */
+.appointments-section {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.section-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.appointment-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-badge {
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-badge.total {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary-color);
+}
+
+.stat-badge.confirmed {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.stat-badge.pending {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9));
+  border-radius: 16px;
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.empty-state h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Appointments Content */
+.appointments-content {
+  margin-top: 2rem;
+}
+
+/* Animations */
+@keyframes gentlePulse {
+  0%, 100% {
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  }
+  50% {
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.25);
+  }
+}
+
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .patient-dashboard .dashboard-container {
+      padding: 1.5rem;
+      margin: 0.5rem;
+  }
+  
+  .welcome-title {
+      font-size: 2rem;
+  }
+  
+  .confirmation-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+  }
+  
+  .confirmation-dismiss {
+      margin-left: 0;
+      align-self: flex-end;
+  }
+  
+  .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+  }
+  
+  .appointment-stats {
+      width: 100%;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+  }
+  
+  .book-appointment-btn {
+      width: 100%;
+      justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-form-container,
+  .appointments-section {
+      padding: 1.5rem;
+  }
+  
+  .welcome-title {
+      font-size: 1.75rem;
+  }
+  
+  .confirmation-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 1.5rem;
+  }
+}

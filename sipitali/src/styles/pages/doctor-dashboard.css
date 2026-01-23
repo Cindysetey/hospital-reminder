@@ -1,0 +1,742 @@
+/* ============================================
+   DOCTOR DASHBOARD - PROFESSIONAL MEDICAL
+   ============================================ */
+
+   .doctor-dashboard {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.95) 100%
+    );
+    overflow: hidden;
+  }
+  
+  /* Hospital Background */
+  .doctor-dashboard::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(
+        135deg,
+        rgba(37, 99, 235, 0.15) 0%,
+        rgba(14, 165, 233, 0.1) 50%,
+        rgba(16, 185, 129, 0.08) 100%
+      ),
+      url('https://i.pinimg.com/1200x/0b/ca/e8/0bcae84115f447708fb06843fcb5fd82.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    filter: brightness(1.15) contrast(1.1);
+    transform: scale(1.08);
+    animation: professionalZoom 25s ease-in-out infinite alternate;
+    z-index: -3;
+  }
+  
+  /* Professional Pattern Overlay */
+  .doctor-dashboard::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 4px
+      );
+    z-index: -2;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  /* Main Container with Professional Look */
+  .doctor-dashboard .dashboard-container {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(30px);
+    border-radius: var(--radius-2xl);
+    box-shadow: 
+      var(--shadow-2xl),
+      0 0 0 1px rgba(255, 255, 255, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    animation: slideUp 0.6s ease-out 0.2s both;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Professional Blue Border */
+  .doctor-dashboard .dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--primary-color),
+      var(--secondary-color),
+      var(--success-color)
+    );
+    background-size: 200% 100%;
+    animation: gradientShift 4s ease infinite;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+  
+  /* Doctor Specific Title */
+  .doctor-dashboard .dashboard-container > h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    text-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .doctor-dashboard .dashboard-container > h1::after {
+    content: 'MD';
+    position: absolute;
+    top: -8px;
+    right: -40px;
+    font-size: 1rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Appointments Section */
+  .doctor-dashboard .appointments-section {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.9) 100%
+    );
+    backdrop-filter: blur(25px);
+    border-radius: var(--radius-2xl);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 
+      var(--shadow-2xl),
+      0 0 30px rgba(37, 99, 235, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    animation: slideUp 0.6s ease-out 0.3s both;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .doctor-dashboard .appointments-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+  
+  .section-description {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    max-width: 800px;
+    padding: 1rem 1.5rem;
+    background: rgba(37, 99, 235, 0.05);
+    border-radius: var(--radius-xl);
+    border-left: 4px solid var(--primary-color);
+    animation: fadeIn 0.8s ease-out 0.4s both;
+  }
+  
+  /* Schedule Specific Elements */
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .time-slot {
+    background: linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.08) 0%,
+      rgba(14, 165, 233, 0.05) 100%
+    );
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .time-slot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .time-slot:hover {
+    transform: translateX(8px) translateY(-4px);
+    box-shadow: 
+      var(--shadow-xl),
+      0 10px 30px rgba(37, 99, 235, 0.2);
+    border-left-width: 6px;
+  }
+  
+  .time-slot:hover::before {
+    opacity: 1;
+  }
+  
+  .time-slot.past {
+    opacity: 0.7;
+    border-left-color: var(--text-light);
+  }
+  
+  .time-slot.current {
+    border-left-color: var(--success-color);
+    animation: gentlePulse 2s infinite;
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 20px rgba(16, 185, 129, 0.2);
+  }
+  
+  /* Custom Animations */
+  @keyframes professionalZoom {
+    0% {
+      transform: scale(1.08) translateX(0);
+    }
+    100% {
+      transform: scale(1.12) translateX(-20px);
+    }
+  }
+  
+  @keyframes gentlePulse {
+    0%, 100% {
+      box-shadow: 
+        var(--shadow-lg),
+        0 0 20px rgba(16, 185, 129, 0.2);
+    }
+    50% {
+      box-shadow: 
+        var(--shadow-xl),
+        0 0 30px rgba(16, 185, 129, 0.3);
+    }
+  }
+  
+  /* Doctor-Specific Button */
+  .doctor-dashboard .btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: var(--shadow-lg), 0 4px 20px rgba(37, 99, 235, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .doctor-dashboard .btn-primary::after {
+    content: '👨‍⚕️';
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .doctor-dashboard .btn-primary:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Professional Loading Animation */
+  .doctor-dashboard .loading-spinner {
+    border: 3px solid rgba(37, 99, 235, 0.1);
+    border-top-color: var(--primary-color);
+    border-right-color: var(--secondary-color);
+    animation: spin 1s linear infinite;
+  }
+
+  /* ============================================
+   DOCTOR DASHBOARD - PROFESSIONAL MEDICAL UI
+   ============================================ */
+
+.doctor-dashboard .dashboard-container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 1.5rem auto;
+  max-width: 1400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Doctor-specific gradient border */
+.doctor-dashboard .dashboard-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, 
+      #1e40af 0%, 
+      var(--primary-color) 50%, 
+      #3b82f6 100%);
+  z-index: 1;
+}
+
+/* Welcome Section with Doctor Badge */
+.doctor-dashboard .welcome-section {
+  padding: 2rem 0 3rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.doctor-dashboard .welcome-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcome-title::after {
+  content: 'MD';
+  background: linear-gradient(135deg, #1e40af, var(--primary-color));
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.welcome-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.doctor-dashboard .welcome-message {
+  max-width: 800px;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(59, 130, 246, 0.03));
+  border-radius: 16px;
+  border-left: 4px solid var(--primary-color);
+}
+
+/* Dashboard Stats - Doctor Focused */
+.doctor-dashboard .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.doctor-dashboard .stat-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.doctor-dashboard .stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.doctor-dashboard .stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), #3b82f6);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.stat-icon.today { color: var(--primary-color); }
+.stat-icon.upcoming { color: var(--accent-color); }
+.stat-icon.waiting { color: var(--warning-color); }
+.stat-icon.completed { color: var(--success-color); }
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* View Controls */
+.view-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(59, 130, 246, 0.01));
+  border-radius: 16px;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.view-btn {
+  padding: 0.875rem 1.75rem;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.view-btn:hover {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--text-primary);
+}
+
+.view-btn.active {
+  background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+  color: white;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.date-selector {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: white;
+  padding: 0.875rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.date-nav {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+  border-radius: 50%;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-nav:hover {
+  background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+  color: white;
+  transform: scale(1.1);
+}
+
+.current-date {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 180px;
+  text-align: center;
+}
+
+/* Appointments Section */
+.doctor-dashboard .appointments-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.doctor-dashboard .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.doctor-dashboard .section-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.schedule-filters {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* Appointment Groups */
+.appointment-group {
+  margin-bottom: 2.5rem;
+}
+
+.appointment-group:last-child {
+  margin-bottom: 0;
+}
+
+.group-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.today-indicator {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+.upcoming-indicator {
+  color: var(--accent-color);
+  font-size: 1.5rem;
+}
+
+/* Empty State for Doctors */
+.doctor-dashboard .empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9));
+  border-radius: 16px;
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+}
+
+.doctor-dashboard .empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.doctor-dashboard .empty-state h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.doctor-dashboard .empty-state p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Calendar Placeholder */
+.calendar-section {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+}
+
+.calendar-placeholder {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.calendar-icon {
+  font-size: 5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+}
+
+.calendar-placeholder h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.calendar-placeholder p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.5;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .doctor-dashboard .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .doctor-dashboard .dashboard-container {
+      padding: 1.5rem;
+      margin: 0.5rem;
+  }
+  
+  .welcome-title {
+      font-size: 2rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+  }
+  
+  .welcome-title::after {
+      align-self: flex-start;
+  }
+  
+  .view-controls {
+      flex-direction: column;
+      gap: 1.5rem;
+  }
+  
+  .date-selector {
+      width: 100%;
+      justify-content: center;
+  }
+  
+  .doctor-dashboard .stats-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointments-section,
+  .calendar-section {
+      padding: 1.5rem;
+  }
+  
+  .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+  }
+  
+  .schedule-filters {
+      width: 100%;
+      flex-wrap: wrap;
+  }
+  
+  .filter-btn {
+      flex: 1;
+      text-align: center;
+      min-width: 80px;
+  }
+}

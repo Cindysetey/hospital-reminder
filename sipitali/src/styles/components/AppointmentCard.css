@@ -1,91 +1,186 @@
-@import '../common/variables.css';
+/* ============================================
+   APPOINTMENT CARD - ENHANCED STYLES
+   ============================================ */
 
-.appointment-card {
-  background: var(--white);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+   .appointment-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .appointment-card:hover {
-  box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.appointment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.appointment-card:hover::before {
+    opacity: 1;
 }
 
 .appointment-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
 }
 
 .appointment-header h3 {
-  margin: 0;
-  color: var(--text-primary);
-  font-size: 1.125rem;
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
 .status-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  color: var(--white);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.status-badge[style*="pending"] {
+    background: linear-gradient(135deg, var(--warning-color), #f59e0b);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+.status-badge[style*="confirmed"] {
+    background: linear-gradient(135deg, var(--success-color), #10b981);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.status-badge[style*="cancelled"] {
+    background: linear-gradient(135deg, var(--danger-color), #ef4444);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.status-badge[style*="completed"] {
+    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .appointment-body {
-  color: var(--text-secondary);
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
 }
 
 .appointment-body p {
-  margin: 0.5rem 0;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
 }
 
 .appointment-body strong {
-  color: var(--text-primary);
-  margin-right: 0.5rem;
+    min-width: 120px;
+    color: var(--text-secondary);
+    font-weight: 600;
 }
 
 .appointment-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.btn-confirm, .btn-cancel {
+    flex: 1;
+    padding: 0.875rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .btn-confirm {
-  background-color: var(--success-color);
-  color: var(--white);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 500;
-  transition: var(--transition);
+    background: linear-gradient(135deg, var(--success-color), #10b981);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 .btn-confirm:hover {
-  background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
 }
 
 .btn-cancel {
-  background-color: var(--error-color);
-  color: var(--white);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 500;
-  transition: var(--transition);
+    background: linear-gradient(135deg, var(--danger-color), #ef4444);
+    color: white;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
 .btn-cancel:hover {
-  background-color: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
 }
 
+/* Compact variant for lists */
+.appointment-card.compact {
+    padding: 1.25rem;
+}
+
+.appointment-card.compact .appointment-header {
+    margin-bottom: 1rem;
+}
+
+.appointment-card.compact .appointment-header h3 {
+    font-size: 1.125rem;
+}
+
+.appointment-card.compact .appointment-body p {
+    font-size: 0.95rem;
+    margin: 0.25rem 0;
+}
+
+.appointment-card.compact .appointment-body strong {
+    min-width: 100px;
+}
+
+.appointment-card.compact .appointment-actions {
+    padding-top: 1rem;
+}
+
+/* Urgent variant */
+.appointment-card.urgent {
+    border-color: var(--danger-color);
+    animation: urgentPulse 2s infinite;
+}
+
+@keyframes urgentPulse {
+    0%, 100% {
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.1);
+    }
+    50% {
+        box-shadow: 0 6px 25px rgba(239, 68, 68, 0.2);
+    }
+}
